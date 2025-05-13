@@ -15,7 +15,7 @@ class OnBoardingCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 6.0),
               child: Container(
                 height: 80,
-                width: width,
+                width: width > 1024 ? 500 : width,
                 decoration: BoxDecoration(
                   color: const Color(0xffFFFFFF),
                   borderRadius: BorderRadius.circular(10),
