@@ -15,19 +15,15 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          name,
-          style: TextStyle(
-            color: types ? Color(0xff000000) : Color(0xffFFFFFF),
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: types ? Color(0xffFFFFFF) : Color(0xffE500AC),
-          padding: EdgeInsets.symmetric(vertical: height, horizontal: width),
-        ),
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text(
+        name,
+        style: TextStyle(color: types ? Color(0xff000000) : Color(0xffFFFFFF)),
+      ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: types ? Color(0xffFFFFFF) : Color(0xffE500AC),
+        padding: EdgeInsets.symmetric(vertical: height, horizontal: width),
       ),
     );
   }
