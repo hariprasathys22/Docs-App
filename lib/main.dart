@@ -1,4 +1,6 @@
+import 'package:docs_ui/constants/gradientScaffold/gradient_scaffold.dart';
 import 'package:docs_ui/screens/on_boarding.dart';
+import 'package:docs_ui/screens/register_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,15 +14,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Docs UI',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 255, 255, 255),
-        ),
-      ),
       initialRoute: "/",
-      routes: {"/": (context) => const OnBoarding()},
+      onGenerateRoute: (settings) {
+        Widget page;
+        switch (settings.name) {
+          case '/register':
+            page = const RegisterPage();
+            break;
+
+          case '/':
+          default:
+            page = const OnBoarding();
+        }
+        return MaterialPageRoute(
+          builder: (_) => GradientScaffold(child: page),
+          settings: settings,
+        );
+      },
     );
   }
 }

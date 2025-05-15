@@ -1,4 +1,5 @@
-import 'package:docs_ui/constants/button.dart';
+import 'package:docs_ui/constants/button/button.dart';
+import 'package:docs_ui/constants/roundedLogo/rounded_logo.dart';
 import 'package:docs_ui/widgets/onBoarding/on_boarding_card.dart';
 import 'package:flutter/material.dart';
 
@@ -7,87 +8,61 @@ class OnBoarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xffFFFFFF),
-              Color.fromARGB(255, 241, 216, 237),
-              Color.fromARGB(255, 251, 242, 255),
-              Color.fromARGB(255, 255, 255, 226),
-            ],
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
-          child: Center(
-            child: Column(
-              children: [
-                const SizedBox(height: 50),
-                Container(
-                  height: 130,
-                  width: 130,
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 253, 247, 252),
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      height: 100,
-                      width: 100,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                      ),
-                      child: const Icon(
-                        Icons.cabin,
-                        color: Color(0xffE500AC),
-                        size: 40,
-                      ),
-                    ),
-                  ),
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: screenHeight - 80),
+        child: IntrinsicHeight(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: screenHeight * 0.08),
+              const RoundedLogo(),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  "Neuralyfe",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 30),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text(
-                    "Smart AI Companion for Anytime Assistance",
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
-                    textAlign: TextAlign.center,
-                  ),
+              ),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                child: Text(
+                  "Your smart AI companion, ready to assist with answers, advice and inspiration, keeping you informed and engaged anytime, anywhere you go.",
+                  style: TextStyle(fontSize: 14),
+                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text(
-                    "Your smart AI companion, ready to assist with answers, advice and inspiration, keeping you informed and engaged anytime, anywhere you go.",
-                    style: TextStyle(fontSize: 14),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const SizedBox(height: 30),
+              ),
+              const SizedBox(height: 30),
+              const OnBoardingCard(),
 
-                /// ✅ Repeating vertical containers with text inside properly
-                OnBoardingCard(),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Button(name: "Login", types: true, height: 10, width: 60),
-                    Button(
-                      name: "Register",
-                      types: false,
-                      height: 10,
-                      width: 50,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              /// ✅ Replacing Spacer with a dynamic spacer
+              const Spacer(),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Button(
+                    name: "Login",
+                    types: true,
+                    height: 40,
+                    width: screenWidth / 3,
+                  ),
+                  Button(
+                    name: "Register",
+                    types: false,
+                    height: 40,
+                    width: screenWidth / 3,
+                    onTap: () => Navigator.pushNamed(context, '/register'),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
