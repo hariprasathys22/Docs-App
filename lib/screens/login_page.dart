@@ -1,15 +1,15 @@
 import 'package:docs_ui/constants/roundedLogo/rounded_logo.dart';
-import 'package:docs_ui/widgets/registerTextField/register_text_field.dart';
+import 'package:docs_ui/widgets/loginTextField/login_text_field.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -25,21 +25,30 @@ class _RegisterPageState extends State<RegisterPage> {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
-                  "Create a new account",
+                  "Login to your account",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                   textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(height: 30),
-              RegisterTextField(),
+              LoginTextField(),
               SizedBox(height: 20),
-              
+              Text(
+                "or Login with",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextButton(
-                  onPressed: () => Navigator.pushNamed(context, '/login'),
+                  onPressed: () => Navigator.pushNamed(context, '/register'),
                   child: Text(
-                    "Already have an account?",
+                    "Create a new account",
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
@@ -54,5 +63,6 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+
   }
 }

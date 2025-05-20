@@ -52,6 +52,7 @@ class OnBoarding extends StatelessWidget {
                     types: true,
                     height: 40,
                     width: screenWidth / 3,
+                    onTap: () => Navigator.pushNamed(context, '/login'),
                   ),
                   Button(
                     name: "Register",
