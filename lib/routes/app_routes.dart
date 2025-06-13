@@ -4,4 +4,5 @@ class Routes {
   static const ONBOARDING = '/';
   static const REGISTER = '/register';
   static const LOGIN = '/login';
+  static const HOME = '/home';
 }

@@ -1,4 +1,5 @@
 import 'package:docs_ui/constants/gradientScaffold/gradient_scaffold.dart';
+import 'package:docs_ui/screens/home_page.dart';
 import 'package:docs_ui/screens/login_page.dart';
 import 'package:docs_ui/screens/on_boarding.dart';
 import 'package:docs_ui/screens/register_page.dart';
@@ -19,5 +20,6 @@ class AppPages {
       name: Routes.LOGIN,
       page: () => GradientScaffold(child: LoginPage()),
     ),
+    GetPage(name: Routes.HOME, page: () => const HomePage()),
   ];
 }
