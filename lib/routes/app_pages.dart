@@ -1,8 +1,12 @@
 import 'package:docs_ui/constants/gradientScaffold/gradient_scaffold.dart';
 import 'package:docs_ui/screens/home_page.dart';
 import 'package:docs_ui/screens/login_page.dart';
+import 'package:docs_ui/screens/messages_page.dart';
 import 'package:docs_ui/screens/on_boarding.dart';
+import 'package:docs_ui/screens/profile_page.dart';
 import 'package:docs_ui/screens/register_page.dart';
+import 'package:docs_ui/screens/saved_page.dart';
+import 'package:docs_ui/screens/voice_page.dart';
 import 'package:get/get.dart';
 part 'app_routes.dart';
 
@@ -21,5 +25,9 @@ class AppPages {
       page: () => GradientScaffold(child: LoginPage()),
     ),
     GetPage(name: Routes.HOME, page: () => const HomePage()),
+    GetPage(name: Routes.MESSAGES, page: () => const MessagesPage()),
+    GetPage(name: Routes.VOICE, page: () => const VoicePage()),
+    GetPage(name: Routes.SAVED, page: () => const SavedPage()),
+    GetPage(name: Routes.PROFILE, page: () => const ProfilePage()),
   ];
 }

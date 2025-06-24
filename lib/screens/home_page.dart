@@ -1,39 +1,26 @@
+import 'package:docs_ui/constants/roundedLogo/rounded_logo.dart';
+import 'package:docs_ui/widgets/navigation_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              // For now, just navigate back to login
-              Get.offAllNamed('/login');
-            },
-          ),
-        ],
-      ),
-      body: const Center(
+    return const NavigationWrapper(
+      initialIndex: 0, // Home tab index
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.home, size: 100, color: Colors.blue),
-            SizedBox(height: 20),
-            Text(
-              'Welcome to Home Page!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+            RoundedLogo(),
             SizedBox(height: 10),
             Text(
-              'You have successfully logged in.',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              "How may i assist you today?",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),
