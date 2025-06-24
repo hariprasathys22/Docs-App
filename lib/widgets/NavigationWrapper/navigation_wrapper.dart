@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:docs_ui/widgets/custom_bottom_navigation_bar.dart';
+import 'package:docs_ui/widgets/bottomNavigationBar/custom_bottom_navigation_bar.dart';
 
 class NavigationWrapper extends StatefulWidget {
   final Widget child;

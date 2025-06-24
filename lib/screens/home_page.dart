@@ -1,5 +1,5 @@
 import 'package:docs_ui/constants/roundedLogo/rounded_logo.dart';
-import 'package:docs_ui/widgets/navigation_wrapper.dart';
+import 'package:docs_ui/widgets/NavigationWrapper/navigation_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
