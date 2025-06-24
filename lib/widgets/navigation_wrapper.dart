@@ -26,6 +26,8 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
   }
 
   void _onItemTapped(int index) {
+    if (_selectedIndex == index) return; // Prevent unnecessary navigation
+
     setState(() {
       _selectedIndex = index;
     });
@@ -53,8 +55,12 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: _getAppBarTitle(),
+        title: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 200),
+          child: _getAppBarTitle(),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -64,7 +70,24 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
           ),
         ],
       ),
-      body: widget.child,
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0.0, 0.1),
+                end: Offset.zero,
+              ).animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+              ),
+              child: child,
+            ),
+          );
+        },
+        child: Container(key: ValueKey(_selectedIndex), child: widget.child),
+      ),
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
@@ -78,17 +101,17 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
   Text _getAppBarTitle() {
     switch (_selectedIndex) {
       case 0:
-        return const Text('Home');
+        return const Text('Home', key: ValueKey('home'));
       case 1:
-        return const Text('Messages');
+        return const Text('Messages', key: ValueKey('messages'));
       case 2:
-        return const Text('Voice');
+        return const Text('Voice', key: ValueKey('voice'));
       case 3:
-        return const Text('Saved');
+        return const Text('Saved', key: ValueKey('saved'));
       case 4:
-        return const Text('Profile');
+        return const Text('Profile', key: ValueKey('profile'));
       default:
-        return const Text('App');
+        return const Text('App', key: ValueKey('app'));
     }
   }
 }
