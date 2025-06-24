@@ -1,5 +1,6 @@
 import 'package:docs_ui/constants/roundedLogo/rounded_logo.dart';
 import 'package:docs_ui/widgets/NavigationWrapper/navigation_wrapper.dart';
+import 'package:docs_ui/widgets/chatBar/chatBarWidget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,7 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const NavigationWrapper(
+    return NavigationWrapper(
       initialIndex: 0, // Home tab index
       child: Center(
         child: Column(
@@ -21,6 +22,7 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
+            Chatbarwidget(),
           ],
         ),
       ),
